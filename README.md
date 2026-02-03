@@ -50,4 +50,4 @@ Key Skills Demonstrated: Microsoft Sentinel, KQL (Kusto Query Language), Azure S
 - The geolocation data is for demonstration; accuracy depends on the IP-to-location database used.
 
   Author
-Uvesh Shaikh [LinkedIn](https://www.linkedin.com/in/uveshshaikh)
+- Uvesh Shaikh [LinkedIn](https://www.linkedin.com/in/uveshshaikh)
