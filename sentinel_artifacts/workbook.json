@@ -1,0 +1,50 @@
+{
+    "version": "Notebook/1.0",
+    "items": [
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let GeoIPDB_FULL = _GetWatchlist(\"geoip\");\nlet WindowsEvents = SecurityEvent;\nWindowsEvents | where EventID == 4625\n| order by TimeGenerated desc\n| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)\n| summarize FailureCount = count() by IpAddress, latitude, longitude, cityname, countryname\n| project FailureCount, AttackerIp = IpAddress, latitude, longitude, city = cityname, country = countryname,\nfriendly_location = strcat(cityname, \" (\", countryname, \")\");",
+                "size": 3,
+                "timeContext": {
+                    "durationMs": 2592000000
+                },
+                "queryType": 0,
+                "resourceType": "microsoft.operationalinsights/workspaces",
+                "visualization": "map",
+                "mapSettings": {
+                    "locInfo": "LatLong",
+                    "locInfoColumn": "countryname",
+                    "latitude": "latitude",
+                    "longitude": "longitude",
+                    "sizeSettings": "FailureCount",
+                    "sizeAggregation": "Sum",
+                    "opacity": 0.8,
+                    "labelSettings": "friendly_location",
+                    "legendMetric": "FailureCount",
+                    "legendAggregation": "Sum",
+                    "itemColorSettings": {
+                        "nodeColorField": "FailureCount",
+                        "colorAggregation": "Sum",
+                        "type": "heatmap",
+                        "heatmapPalette": "greenRed"
+                    }
+                },
+                "crossComponentResources": [
+                    "/subscriptions/cd0b20ce-63f0-48e3-97e0-b81e8fe2c48b/resourcegroups/soc-lab/providers/microsoft.operationalinsights/workspaces/workspace"
+                ]
+            },
+            "name": "query - 0",
+            "id": "7c09124d-b1ad-4117-9fb1-68682d387907"
+        }
+    ],
+    "isLocked": true,
+    "fallbackResourceIds": [
+        "/subscriptions/cd0b20ce-63f0-48e3-97e0-b81e8fe2c48b/resourcegroups/soc-lab/providers/microsoft.operationalinsights/workspaces/workspace"
+    ],
+    "fromTemplateId": "sentinel-UserWorkbook",
+    "context": {
+        "ownerId": "/subscriptions/cd0b20ce-63f0-48e3-97e0-b81e8fe2c48b/resourcegroups/soc-lab/providers/microsoft.operationalinsights/workspaces/workspace"
+    }
+}
