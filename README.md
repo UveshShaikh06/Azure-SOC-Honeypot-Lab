@@ -30,7 +30,7 @@ Key Skills Demonstrated: Microsoft Sentinel, KQL (Kusto Query Language), Azure S
   Key Results & Screenshots
 - Live Attack Data: Captured thousands of RDP brute-force attempts within hours of deployment.
 - Threat Map: Visualized attackers from multiple continents, with hotspots in Europe and Asia.
-  ![Sentinel Dashboard](/screenshots/sentinel_dashboard.png)
+  ![Sentinel Dashboard](/screenshots/attack_map.png)
 - Query Analysis: Used KQL to isolate attack patterns and identify common usernames used by attackers.
   ![KQL Results](/screenshots/kql_query_results.png)
 
